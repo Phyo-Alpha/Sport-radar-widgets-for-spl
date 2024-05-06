@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Add Stat</title>
+  </head>
+  <body>
+    <div class="table-widget">
+      <div class="table-container">
+        <h1 class="table-title">ASSISTS</h1>
+        <table class="assist-table stat-table"></table>
+      </div>
+      <div class="table-container">
+        <h1 class="table-title">FOULS COMMITTED</h1>
+        <table class="fouls-table stat-table"></table>
+      </div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="css/matchAddStat.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      async function fetchData() {
+        const url = "http://localhost:3000";
+        return fetch(url)
+          .then((response) => {
+            return response.json();
+          })
+          .catch((err) => console.error(err));
+      }
+
+      async function displayData() {
+        const data = await fetchData();
+        console.log(data);
+        const players = data.statistics.totals.competitors.flatMap((team) => {
+          return team.players;
+        });
+
+        players.sort((a, b) => {
+          return b.statistics.assists - a.statistics.assists;
+        });
+
+        const assistable = document.querySelector(".assist-table");
+        const foulsable = document.querySelector(".fouls-table");
+
+        const assistbody = document.createElement("tbody");
+        assistbody.classList.add("assist-table-body");
+        assistable.appendChild(assistbody);
+
+        const foulsbody = document.createElement("tbody");
+        foulsbody.classList.add("fouls-table-body");
+        foulsable.appendChild(foulsbody);
+
+        players.forEach((player) => {
+          if (player.statistics.assists > 0) {
+            const index = players.indexOf(player) + 1;
+
+            assistbody.innerHTML += `
+                <tr>
+                    <td>${index}.</td>
+                    <td><a href="player.html">${player.name}</a></td>
+                    <td>${player.statistics.assists}</td>
+                </tr>
+            `;
+          }
+        });
+
+        players.forEach((player) => {
+          let totalFoulsCommitted = 0;
+          totalFoulsCommitted += player.statistics.red_cards;
+          totalFoulsCommitted += player.statistics.yellow_cards;
+          player.statistics.totalFoulsCommitted = totalFoulsCommitted;
+        });
+
+        players.sort((a, b) => {
+          return (
+            b.statistics.totalFoulsCommitted - a.statistics.totalFoulsCommitted
+          );
+        });
+
+        players.forEach((player) => {
+          if (player.statistics.totalFoulsCommitted > 0) {
+            const index = players.indexOf(player) + 1;
+            foulsbody.innerHTML += `<tr>
+                <td>${index}.</td>
+                <td><a href="player.html">${player.name}</a></td>
+                <td>${player.statistics.totalFoulsCommitted}</td>
+                </tr>
+            `;
+          }
+        });
+      }
+
+      displayData();
+    </script>
+  </body>
+</html>
