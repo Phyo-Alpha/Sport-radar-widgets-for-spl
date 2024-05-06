@@ -1,0 +1,108 @@
+#sr-widget {
+    width : 70%;
+    margin: 50px auto;
+}
+
+.sr-bb .srt-base-1{
+    border-color : white;
+}
+
+.sr-bb .srt-primary-1{
+    background-color: #B4B4B4;
+    color : black;
+}
+
+
+.sr-bb .srt-primary-3{
+    font-size: 16px;
+    background-color: #E0E0E0;
+    color: #4F4F4F;
+}
+.srt-primary-1-is-active {
+    color: black;
+}
+
+.sr-bb .srt-primary-1-is-active{
+    color : #0D47AD;
+    background-color: white;
+}
+
+.sr-bb .sr-match-default__match{
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    border: 1px solid gray;
+}
+
+.sr-bb .sr-match-default__separator{
+    display: none;
+}
+
+.sr-bb .sr-match-default__status{
+    display: flex;
+    flex-direction: row;
+}
+
+.sr-bb .sr-match-default__status-wrapper{
+    border-bottom: 1px solid gray;   
+    width: 100%;
+    
+}
+
+.sr-match-default__teams{
+    border-left : 1px solid gray;
+    border-right : 1px solid gray;
+}
+
+.sr-bb .sr-match-default__status .sr-match-default__status-pre {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.srm-left {
+    width: 200px;    
+}
+
+.srm-left span{
+    color : #0D47AD;
+    font-size: 16px;
+}
+
+.srm-right {
+    width: 200px;
+}
+
+.srm-right span{
+    color : #0D47AD;
+    font-size: 16px;
+}
+
+.sr-match-default__results-large .srt-text-disabled span{
+    font-size: 26px;
+    font-weight: 100;
+}
+
+.sr-match-default__result-halftime {
+    display: none;
+}
+
+.sr-match-default__score-large {
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sr-match-default__score-large span{
+    font-size: 26px;
+}
+
+
+
+
+
+
+
+

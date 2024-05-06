@@ -1,0 +1,192 @@
+#scoreboard {
+    width: 70%;
+    margin: 0 auto;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+
+
+.match-details{
+    color : #4F4F4F;
+    font-size: 56px;
+}
+.sr-matchinfoheader__separator{
+    display: none;
+}
+
+.sr-bb .sr-matchinfoheader__segment.srm-light{
+  display: none;
+}
+
+
+
+/* Parent box for whole match info */
+.sr-general-scoreboard__main{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #005092 !important;
+    color : white !important;
+
+}
+
+#sr-widget2 .sr-general-scoreboard__mid{
+    background-color: white ;
+    color : black ;
+    width: 100%;
+}
+
+
+
+/*Competition name box*/
+.sr-bb .sr-matchinfoheader__wrapper{
+    border-bottom-width: 0px;
+}
+
+#sr-widget2 .sr-bb .sr-matchinfoheader__wrapper{
+    display: none;
+}
+
+#sr-widget3 .sr-bb .sr-matchinfoheader__wrapper{
+    display: none;
+}
+
+/*Competition name Info*/
+.sr-bb .sr-matchinfoheader__segment{
+    font-size: 11px !important;
+}
+
+/* Containers for Date and address */
+.sr-bb .sr-matchinfo__content{
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    gap:20px;
+    font-size: 11px !important;
+}
+
+/* Icons for date and address */
+.sr-matchinfo__icon{
+    display: none !important;
+}
+
+/*Additional Match Info (Refree Name and stadium length)*/
+.sr-bb .sr-matchinfo__content-row:nth-of-type(3),
+.sr-bb .sr-matchinfo__content-row:nth-of-type(4){
+    display: none;
+}
+
+#sr-widget2 .sr-general-scoreboard__optional-content{
+    background-color: #DCDCDC;
+    color :#666666 !important;
+}
+
+/*Momentum Widget*/
+
+/*Momentum View Box*/
+.sr-momentum__wrap {
+    margin-top: 10px !important;
+    background-color: #F8F8F8;
+}
+
+/*Match Lineups Widget*/
+
+/*Match Lineups*/
+.sr-bb.sr-lineupslineup--large .sr-lineupslineup__players-start.srm-has-formation{
+    display : flex;
+    padding-bottom: 0px;
+}
+
+.sr-lineupscontainer__pitch-wrapper{
+    background-color: #005092;
+    color: white !important;
+}
+
+/*The Line Up Chart*/
+.sr-lineupspitch{
+    background-color: white !important;
+}
+
+.sr-lineupscontainer__pitch-container{
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 40px !important; 
+    padding: 10px 30px !important;
+}
+
+.sr-lineupscontainer__pitch-container span {
+    font-size: 20px !important;
+}
+
+/*Manager Country Flag*/
+.sr-bb .sr-lineupscontainer__manager-crest{
+    height: 25px;
+    width: 25px;
+}
+
+/*Starting Lineups Header Sections*/
+.sr-lineupslineup__header-section{
+    background-color: #DDDDDD;
+    padding : 10px !important;
+    margin-bottom: 0px !important;
+}
+
+/*Starting LineUps Team Icons*/
+.sr-bb .sr-lineupslineup__header-section__crest.sr-crest-jersey{
+    height: 35px;
+    width: 35px;
+}
+
+/*Starting Lineups Header Text*/
+.sr-lineupslineup__header-section__text{
+    font-size: 25px !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+    font-weight: bold !important;
+}
+
+/*Seperator between home and away lineups*/
+.sr-lineupslineup__players-seperator{
+    background-color: #DDDDDD !important;
+}
+
+.sr-lineupslineup__header-section__line{
+    border-color: black !important;
+}
+
+.sr-lineupslineup__player-section > div:nth-of-type(even){
+    background-color: #ECECEC !important;
+}
+
+/*General Statics*/
+.sr-general-statistics__labels{
+    position: relative;
+    top: 28px;
+    z-index: 1; /*So that the labels are always on top of the chart*/
+    color: white !important;
+    font-family: 'Roboto Condensed', sans-serif !important;
+
+}
+
+.sr-general-statistics__title{
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+.sr-general-statistics__label-val{
+    padding: 0px 20px !important;
+    font-size: 16px !important;
+}
+
+.sr-dual-bar-chart__chart-wrapper{
+    position: absolute;
+    height: 40px !important;
+    z-index: 0;
+}
+
+.srt-home-1{
+    background-color: #005092 !important;
+}
+
+.srt-away-1{
+    background-color : red !important;
+}

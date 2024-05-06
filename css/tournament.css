@@ -1,0 +1,100 @@
+#widget-wrapper{
+    width: 70%;
+    margin: 150px auto;
+}
+
+.widget-title{
+    font-family: 'Bebas Neue', sans-serif;
+    color : #4F4F4F;
+    font-size: 56px;
+    font-weight: 400;
+}
+
+.sr-tournamentpreview__event-ticker{
+    display: none;
+}
+
+.sr-tp-header__banner{
+    display: none;
+}
+
+.sr-tp-header__tabs-holder{
+    display: none;
+}
+
+.sr-bb .sr-tournamentpreview__header{
+    height: auto;
+}
+
+.sr-bb .sr-tp-1-standings-livetable__toolbar{
+    display: none;
+}
+
+.sr-bb .sr-table__wrapper{
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size : 12px;
+    table-layout: fixed !important;
+    width: 100%;
+}
+
+
+
+
+.sr-table__tr th{
+    background-color: black;
+    color: white;
+    font-size: 16px !important;
+    border-right: 1px solid white;
+}
+
+.sr-table__tr th:nth-child(1){
+    display: none;
+}
+
+.sr-table__tr td:nth-child(1){
+    display: none;
+}
+
+.sr-bb .sr-table__cell.srm-width-l{
+    min-width: 100px;
+    width: 100px;
+}
+
+.sr-bb .sr-table__cell.srm-width-m{
+    min-width: 70px;
+    width: 70px;
+}
+
+.sr-table__tr td:nth-child(3){
+    color :#0D47AD !important;
+    font-size: 16px !important;
+}
+
+.sr-table__tr:nth-child(even){
+    background-color: #F2F2F2;
+}
+
+
+.sr-bb .srt-draw{
+    background-color: #0D47AD;
+    border-radius: 100%;
+    padding: 1px;
+}
+
+.sr-bb .srt-win{
+    background-color: #8FC84A;
+    border-radius: 100%;
+    padding: 1px;
+}
+
+.sr-bb .srt-lose{
+    background-color:#E43B2F;
+    border-radius: 100%;
+    padding: 1px;
+    color: white;
+}
+
+.sr-tp-1-standings-livetable-columns__arrow{
+    display: none;
+}
+

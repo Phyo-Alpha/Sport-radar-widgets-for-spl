@@ -1,0 +1,69 @@
+#sr-widget-header{
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 56px;
+    color: #4F4F4F;
+}
+
+.sr-livetable__nav-wrapper{
+    background-color: #B4B4B4;
+    color : black;
+}
+
+.sr-livetable__tableHeader div{
+    display: none;
+}
+
+.srm-firstRow{
+    background-color: black; 
+}
+
+.sr-livetable__table{
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size : 14px !important;
+}
+
+.srm-firstRow td{
+    border-right: 1px solid white;
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+
+}
+
+.srm-space{
+    display: none;
+}
+
+/* Show only the first five rows and hides the rest */
+.sr-livetable__table tr:nth-child(n + 7) {
+    display: none;
+}
+
+/* Every even numbered table row, starting from the th */
+.sr-livetable__table tr:nth-child(even){
+    background-color: #F2F2F2;
+}
+
+.sr-livetable__tableTeamName{
+    color :#0D47AD !important;
+    font-size: 16px !important;
+}
+
+.sr-bb .srt-draw{
+    background-color: #0D47AD;
+    border-radius: 100%;
+    padding: 1px;
+}
+
+.sr-bb .srt-win{
+    background-color: #8FC84A;
+    border-radius: 100%;
+    padding: 1px;
+}
+
+.sr-bb .srt-lose{
+    background-color:#E43B2F;
+    border-radius: 100%;
+    padding: 1px;
+    color: white;
+}

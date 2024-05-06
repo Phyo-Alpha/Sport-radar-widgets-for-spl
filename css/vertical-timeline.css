@@ -1,0 +1,54 @@
+#sr-widget {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.sr-matchinfoheader {
+    display: none;
+}
+/* Team Name */
+.sr-matchteamheader__team{
+    font-size: 20px !important;
+    padding: 5px 8px !important;
+}
+
+/* Team Name Box Customization */
+.sr-timeline__match-header-wrapper{
+    margin: 10px !important;
+    justify-content: center !important;
+}
+
+.sr-timeline__wrapper .sr-matchteamheader{
+    padding: 0px !important;
+}
+
+/* Team Color Image Box */
+.sr-bb .sr-matchteamheader__image.sr-crest-jersey{
+    width: 40px;
+    height: 40px;
+}
+
+/*Vertical Timeline scroll table*/
+.sr-scrollbars__container{
+    font-family: "Roboto Condensed", sans-serif !important;
+
+}
+
+/* Each Time Line Cell */
+.sr-bb .sr-timeline__event{
+    font-size: 13px ;
+    color: black ;
+    font-weight: 400;
+    font-stretch: 100%;
+
+}
+
+/* Cells after the third row */
+
+.sr-bb .sr-timeline__event:nth-of-type(n+2)::after{
+    content: none !important;
+
+}
+
+
+

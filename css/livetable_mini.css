@@ -1,0 +1,40 @@
+#standings_content{
+    margin: 0 auto;
+    width: 20%;
+}
+
+#PageTitle{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #002A5B;
+    color : white;
+    padding: 10px 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.sr-matchinfoheader__wrapper{
+    display: none !important;
+}
+
+.sr-livetable__tableHeader{
+    display: none !important;
+}
+
+.sr-livetable__nav-wrapper{
+    display: none !important;
+}
+
+.sr-livetable__table{
+    border: none !important;
+    width: 100%;
+}
+
+.sr-livetable__table td {
+    border: none !important;
+    width: 100%;
+}
+
+.sr-livetable__table td:nth-of-type(n+5):nth-of-type(-n+9){
+    display: none;
+}
+

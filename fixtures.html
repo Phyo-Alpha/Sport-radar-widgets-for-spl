@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fixtures</title>
+  </head>
+  <body>
+    <h1 id="fixtures-title">Fixtures</h1>
+    <br />
+    <script>
+      (function (a, b, c, d, e, f, g, h, i) {
+        a[e] ||
+          ((i = a[e] =
+            function () {
+              (a[e].q = a[e].q || []).push(arguments);
+            }),
+          (i.l = 1 * new Date()),
+          (i.o = f),
+          (g = b.createElement(c)),
+          (h = b.getElementsByTagName(c)[0]),
+          (g.async = 1),
+          (g.src = d),
+          g.setAttribute("n", e),
+          h.parentNode.insertBefore(g, h));
+      })(
+        window,
+        document,
+        "script",
+        "https://widgets.sir.sportradar.com/sportradar/widgetloader",
+        "SIR",
+        {
+          language: "en",
+        }
+      );
+      SIR("addWidget", "#sr-widget", "season.fixtures", {
+        sportId: 1,
+        groupTournaments: true,
+        disableOdds: true,
+      });
+    </script>
+    <div id="sr-widget"></div>
+    <link rel="stylesheet" type="text/css" href="css/fixtures.css" />
+  </body>
+</html>

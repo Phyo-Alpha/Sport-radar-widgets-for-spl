@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scoreboard</title>
+  </head>
+  <body>
+    <script>
+      (function (a, b, c, d, e, f, g, h, i) {
+        a[e] ||
+          ((i = a[e] =
+            function () {
+              (a[e].q = a[e].q || []).push(arguments);
+            }),
+          (i.l = 1 * new Date()),
+          (i.o = f),
+          (g = b.createElement(c)),
+          (h = b.getElementsByTagName(c)[0]),
+          (g.async = 1),
+          (g.src = d),
+          g.setAttribute("n", e),
+          h.parentNode.insertBefore(g, h));
+      })(
+        window,
+        document,
+        "script",
+        "https://widgets.sir.sportradar.com/sportradar/widgetloader",
+        "SIR",
+        {
+          language: "en",
+        }
+      );
+      (function (a, b, c, d, e, f, g, h, i) {
+        a[e] ||
+          ((i = a[e] =
+            function () {
+              (a[e].q = a[e].q || []).push(arguments);
+            }),
+          (i.l = 1 * new Date()),
+          (i.o = f),
+          (g = b.createElement(c)),
+          (h = b.getElementsByTagName(c)[0]),
+          (g.async = 1),
+          (g.src = d),
+          g.setAttribute("n", e),
+          h.parentNode.insertBefore(g, h));
+      })(
+        window,
+        document,
+        "script",
+        "https://widgets.media.sportradar.com/YOUR_CLIENT_ALIAS/widgetloader",
+        "SIR",
+        {
+          language: "en_us",
+        }
+      );
+      SIR("addWidget", "#sr-widget", "match.scoreboard", {
+        matchId: 43255229,
+        sportId: 1,
+        uniqueTournamentId: 136,
+        disableWidgetHeader: false,
+        disableMatchHeader: true,
+      });
+      SIR("addWidget", "#sr-widget2", "match.scoreboard", {
+        matchId: 43255229,
+        sportId: 1,
+        uniqueTournamentId: 136,
+        disableMatchInfo: true,
+        expandedGoalScorers: true,
+      });
+      SIR("addWidget", "#sr-widget3", "match.momentum", { matchId: 43255229 });
+      SIR("addWidget", "#sr-widget4", "match.lineups", {
+        matchId: 43255229,
+        disableWidgetHeader: true,
+        disableMatchHeader: true,
+      });
+      SIR("addWidget", "#sr-widget5", "match.generalStatistics", {
+        matchId: 43255229,
+        disableWidgetHeader: true,
+        disableMatchHeader: true,
+        disablePeriods: true,
+        disableGroups: true,
+        visibleStats: [
+          `corner_kick`,
+          `goal_attempts`,
+          `shot_on_target`,
+          `goal_kick`,
+          `yellow_card`,
+          `red_card`,
+        ],
+      });
+    </script>
+    <div id="scoreboard">
+      <h1 class="match-details">MATCH DETAILS</h1>
+      <div id="sr-widget"></div>
+      <div id="sr-widget2"></div>
+      <div id="sr-widget3"></div>
+      <h1 class="match-details">SUMMARY</h1>
+      <div id="sr-widget4"></div>
+      <div id="sr-widget5"></div>
+    </div>
+
+    <link rel="stylesheet" type="text/css" href="css/scoreboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </body>
+</html>
