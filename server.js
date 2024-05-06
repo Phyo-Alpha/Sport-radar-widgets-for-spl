@@ -29,6 +29,23 @@ app.get('/', (req, res) => {
     handleRequest(req, res, url);
 });
 
+app.get('/competitor-summary', (req, res) => {
+    const teamId = req.query.teamId;
+    const startIndex = 0;
+    const limit = 20;
+    const url = `https://api.sportradar.com/soccer/trial/v4/en/competitors/sr%3Acompetitor%3A${teamId}/summaries.json?start=${startIndex}&limit=${limit}&api_key=KTmX50ecuz4V1DbugD3O9aENXSODlGdp2iAwluZB`;
+    handleRequest(req, res, url);
+});
+
+app.get('/club-players-info', (req, res) => {
+    const teamId = req.query.teamId;
+    const seasonId = req.query.seasonId;
+    const url = `https://api.sportradar.com/soccer/trial/v4/en/seasons/sr%3Aseason%3A${seasonId}/competitors/sr%3Acompetitor%3A${teamId}/statistics.json?api_key=KTmX50ecuz4V1DbugD3O9aENXSODlGdp2iAwluZB`;
+    handleRequest(req, res, url);
+});
+
+
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
 });
