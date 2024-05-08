@@ -1,5 +1,6 @@
 const teamId = 44;
 const seasonId = 93741;
+const playerId = 1406549;
 
 async function fetchData(url) {
 
@@ -70,15 +71,14 @@ async function displayPrevMatchData() {
     });
 }
 
-async function displayClubPlayersRoster() {
-    const data = await fetchData(`http://localhost:3000/club-players-info?teamId=${teamId}&seasonId=${seasonId}`);
+async function displayClubPlayersStats() {
+    const data = await fetchData(`http://localhost:3000/club-players-stats?teamId=${teamId}&seasonId=${seasonId}`);
 
     if (data === undefined) {
         return;
     }
 
     const playerInfo = data.competitor.players;
-    console.log(playerInfo);
 
     const matchesPlayedTableBody = document.querySelector(".matches-played-table-body");
 
@@ -143,17 +143,17 @@ async function displayClubPlayersRoster() {
     const playerShotsTableBody = document.querySelector(".player-shots-table-body");
 
     playerInfo.sort((a, b) => {
-        const totalShotsA = a.statistics.shots_blocked + a.statistics.shots_on_target + a.statistics.shots_off_target;
-        const totalShotsB = b.statistics.shots_blocked + b.statistics.shots_on_target + b.statistics.shots_off_target;
+        const totalShotsA = a.statistics.shots_blocked ? a.statistics.shots_blocked : 0 + a.statistics.shots_on_target ? a.statistics.shots_on_target : 0 + a.statistics.shots_off_target ? a.statistics.shots_off_target : 0;
+        const totalShotsB = b.statistics.shots_blocked ? b.statistics.shots_blocked : 0 + b.statistics.shots_on_target ? b.statistics.shots_on_target : 0 + b.statistics.shots_off_target ? b.statistics.shots_off_target : 0;
         return totalShotsB - totalShotsA;
     });
 
     for (let i = 0; i < 5; i++) {
         const player = playerInfo[i];
         const playerName = player.name;
-        const shots_blocked = player.statistics.shots_blocked;
-        const shots_on_target = player.statistics.shots_on_target;
-        const shots_off_target = player.statistics.shots_off_target;
+        const shots_blocked = player.statistics.shots_blocked ? player.statistics.shots_blocked : 0;
+        const shots_on_target = player.statistics.shots_on_target ? player.statistics.shots_on_target : 0;
+        const shots_off_target = player.statistics.shots_off_target ? player.statistics.shots_off_target : 0;
         const shots_total = shots_on_target + shots_off_target + shots_blocked;
 
         playerShotsTableBody.innerHTML += `
@@ -231,7 +231,7 @@ async function displayClubPlayersRoster() {
         const playerName = player.name;
         const matchStarted = player.statistics.matches_played;
         const goals = player.statistics.goals_scored;
-        const shots = player.statistics.shots_on_target + player.statistics.shots_off_target + player.statistics.shots_blocked;
+        const shots = player.statistics.shots_on_target ? player.statistics.shots_on_target : 0 + player.statistics.shots_off_target ? player.statistics.shots_off_target : 0 + player.statistics.shots_blocked ? player.statistics.shots_blocked : 0;
         const assists = player.statistics.assists;
         const yellow_cards = player.statistics.yellow_cards;
         const red_cards = player.statistics.red_cards;
@@ -252,5 +252,122 @@ async function displayClubPlayersRoster() {
     })
 }
 
-displayClubPlayersRoster();
+async function displayFullTeamRoaster() {
+    const data = await fetchData(`http://localhost:3000/club-squadList?teamId=${teamId}`);
+
+    if (data === undefined) {
+        return;
+    }
+
+    const squadList = data.players;
+
+    squadList.sort((a, b) => {
+        return a.jersey_number - b.jersey_number;
+    });
+
+    const squadListTableBody = document.querySelector(".squad-list-table-body");
+
+    squadList.forEach((player) => {
+        const playerName = player.name;
+        const shirtNumber = player.jersey_number;
+        const dateOfBirth = player.date_of_birth;
+        const age = new Date().getFullYear() - new Date(dateOfBirth).getFullYear();
+        const nationality = player.nationality;
+        const position = player.type.toUpperCase();
+
+        squadListTableBody.innerHTML += `
+            <tr>
+                <td>${shirtNumber}</td>
+                <td>${playerName}</td>
+                <td>${dateOfBirth}</td>
+                <td>${age}</td>
+                <td>${nationality}</td>
+                <td>${position}</td>
+            </tr>
+        `;
+    })
+}
+
+async function displayPlayerInfo() {
+    const data = await fetchData(`http://localhost:3000/club-players-stats?teamId=${teamId}&seasonId=${seasonId}`);
+
+    if (data === undefined) {
+        return;
+    }
+
+    const seasonName = data.season.name;
+    const playersInfo = data.competitor.players;
+    const teamName = data.competitor.name;
+
+    const targetPlayer = playersInfo.find((player) => player.id === "sr:player:" + playerId);
+
+    const playerStatsTableBody = document.querySelector(".player-stats-table-body");
+    const playerStatTitle = document.querySelector(".player-stat-title");
+
+    playerStatTitle.innerHTML = `${targetPlayer.name} STATS`;
+
+    const { assists, cards_given, shots_blocked, shots_off_target, shots_on_target, yellow_cards, red_cards, goals_scored } = targetPlayer.statistics;
+    playerStatsTableBody.innerHTML += `
+        <tr>
+            <td>${seasonName}</td>
+            <td>${teamName}</td>
+            <td>${goals_scored}</td>
+            <td>${(shots_on_target ? shots_on_target : 0) + (shots_off_target ? shots_off_target : 0) + (shots_blocked ? shots_blocked : 0)}</td>
+            <td>${assists}</td>
+            <td>${cards_given}</td>
+            <td>${yellow_cards}</td>
+            <td>${goals_scored}</td>
+            
+        </tr>
+    `;
+}
+
+async function displayPlayerGameLog() {
+    const data = await fetchData(`http://localhost:3000/player-game-log?playerId=${playerId}`);
+
+    if (data === undefined) {
+        return;
+    }
+
+    const gamelogs = data.summaries;
+    const playerGameLogTableBody = document.querySelector(".player-preMatches-stats-table-body");
+
+    const playerGameLogTitle = document.querySelector(".player-gamelog-title");
+
+    gamelogs.forEach((gamelog) => {
+        const date = gamelog.sport_event.start_time;
+
+        const formattedDate = new Date(date).toLocaleDateString("en-US", {
+            month: "short",
+            day: "2-digit",
+            year: "numeric",
+            hour: "numeric",
+            minute: "numeric"
+        });
+
+        const opponent = gamelog.sport_event.competitors.find((competitor) => competitor.id !== "sr:competitor:" + teamId).name;
+
+        const playerStats = gamelog.statistics.totals.competitors.find((competitor) => competitor.id === "sr:competitor:" + teamId).players.find((player) => player.id === "sr:player:" + playerId).statistics;
+
+        const { assists, shots_blocked, shots_off_target, shots_on_target, yellow_cards, red_cards, goals_scored } = playerStats;
+
+        playerGameLogTableBody.innerHTML += `
+            <tr>
+                <td>${opponent}</td>
+                <td>${formattedDate}</td>
+                <td>${(shots_on_target ? shots_on_target : 0) + (shots_off_target ? shots_off_target : 0) + (shots_blocked ? shots_blocked : 0)}</td>
+                <td>${goals_scored}</td>
+                <td>${assists}</td>
+                <td>${yellow_cards + red_cards}</td>
+                <td>${yellow_cards}</td>
+                <td>${red_cards}</td>
+            </tr>
+        `;
+    })
+}
+
+displayFullTeamRoaster();
+displayClubPlayersStats();
 displayPrevMatchData();
+displayPlayerInfo();
+displayPlayerGameLog();
